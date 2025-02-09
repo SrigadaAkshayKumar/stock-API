@@ -14,7 +14,7 @@ from sklearn.linear_model import LinearRegression
 import os
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://your-frontend-service.onrender.com"}})
+CORS(app, resources={r"/*": {"origins": "https://stockanalyzer-qtk1.onrender.com"}})
 
 model = load_model('Model.keras')
 
