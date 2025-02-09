@@ -1,0 +1,10 @@
+Flask
+Flask-Cors
+numpy
+pandas
+yfinance
+requests
+plotly
+tensorflow
+scikit-learn
+gunicorn
