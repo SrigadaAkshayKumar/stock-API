@@ -16,7 +16,11 @@ import os
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": "https://stockanalyzer-qtk1.onrender.com"}})
 
-model = load_model('Model.keras')
+# Load the model with error handling
+try:
+    model = load_model('Model.keras')
+except Exception as e:
+    print(f"Error loading model: {e}")
 
 cleaned_data_cache = {}
 
