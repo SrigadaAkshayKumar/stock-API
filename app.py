@@ -146,8 +146,11 @@ def predict_stock():
         data['Date'] = data.index
         data['Date'] = data['Date'].map(datetime.toordinal)
         X = data['Date'].values.reshape(-1, 1)
-        y = data['Close'].values
+        y = data['Close'].values.flatten()  # Ensure y is a 1D array
         actual_dates = data.index.strftime('%Y-%m-%d').tolist()  # Actual dates
+
+        # Debugging: Check the shape of y
+        print(f"Shape of y: {y.shape}")
 
         # Train model
         model = LinearRegression()
@@ -160,17 +163,19 @@ def predict_stock():
         predicted_dates = [date.strftime('%Y-%m-%d') for date in future_dates]  # Predicted dates
 
         # Calculate returns
-        current_price = y[-1]
         stocks = [10, 20, 50, 100]
         returns = []
+        current_price = float(y[-1])  # Convert current price to float once
+
         for stock in stocks:
             returns.append({
                 'stocks_bought': stock,
                 'current_price': round(current_price * stock, 2),
-                'after_1_year': round(stock * predictions[0], 0),
-                'after_5_years': round(stock * predictions[4], 0),
-                'after_10_years': round(stock * predictions[9], 0)
+                'after_1_year': round(float(predictions[0]) * stock, 0),
+                'after_5_years': round(float(predictions[4]) * stock, 0),
+                'after_10_years': round(float(predictions[9]) * stock, 0)
             })
+
 
         return jsonify({
             'predictions': predictions.tolist(),
