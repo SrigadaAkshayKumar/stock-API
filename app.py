@@ -130,7 +130,7 @@ def get_stock_data():
 
 from datetime import datetime, timedelta
 
-@app.route('/api/stock/predict', methods=['GET'])
+@app.route('/api/stock/predict', methods=['GET', 'OPTIONS'])
 def predict_stock():
     ticker = request.args.get('ticker')
     if not ticker:
@@ -185,7 +185,7 @@ def predict_stock():
         return jsonify({'error': f'Internal Server Error: {str(e)}'}), 500
 
 
-@app.route('/api/stock/info', methods=['GET'])
+@app.route('/api/stock/info', methods=['GET', 'OPTIONS'])
 def get_stock_info():
     stock_ticker = request.args.get('ticker')
     chart_period = request.args.get('chart_period', '1mo')
