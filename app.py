@@ -8,7 +8,7 @@ import json
 import traceback
 import plotly
 import requests
-from keras.models import load_model
+from tensorflow.keras.models import load_model  # Updated to tf.keras
 from sklearn.preprocessing import MinMaxScaler
 from datetime import datetime, timedelta
 from sklearn.linear_model import LinearRegression
@@ -17,13 +17,13 @@ import os
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["https://stockanalyzer-qtk1.onrender.com"]}})
 
-# Load the model with error handling
+# Load the model with error handling using tf.keras
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-model_path = os.path.join(BASE_DIR, 'Model.keras')
+model_path = os.path.join(BASE_DIR, 'tf.keras')
 
 try:
     model = load_model(model_path)
-    print("Model loaded successfully.")
+    print("Model loaded successfully with tf.keras.")
 except Exception as e:
     print(f"Error loading model: {e}")
 
