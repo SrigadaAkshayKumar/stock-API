@@ -14,11 +14,14 @@ from sklearn.linear_model import LinearRegression
 import os
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "https://stockanalyzer-qtk1.onrender.com"}})
+CORS(app, resources={r"/*": {"origins": ["https://stockanalyzer-qtk1.onrender.com"]}})
 
-# Load the model with error handling
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(BASE_DIR, 'Model.keras')
+
 try:
-    model = load_model('Model.keras')
+    model = load_model(model_path)
+    print("Model loaded successfully.")
 except Exception as e:
     print(f"Error loading model: {e}")
 
@@ -121,7 +124,11 @@ def get_stock_data():
             "table_period": table_period
         })
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        import traceback
+        error_message = traceback.format_exc()
+        print(f"Error during prediction: {error_message}")
+        return jsonify({'error': f'Internal Server Error: {str(e)}'}), 500
+
 
 from datetime import datetime, timedelta
 
