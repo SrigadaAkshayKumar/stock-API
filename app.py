@@ -5,6 +5,7 @@ import numpy as np
 import plotly.express as px
 from flask_cors import CORS
 import json
+import traceback
 import plotly
 import requests
 from keras.models import load_model
@@ -16,6 +17,7 @@ import os
 app = Flask(__name__)
 CORS(app, resources={r"/*": {"origins": ["https://stockanalyzer-qtk1.onrender.com"]}})
 
+# Load the model with error handling
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 model_path = os.path.join(BASE_DIR, 'Model.keras')
 
@@ -124,11 +126,7 @@ def get_stock_data():
             "table_period": table_period
         })
     except Exception as e:
-        import traceback
-        error_message = traceback.format_exc()
-        print(f"Error during prediction: {error_message}")
-        return jsonify({'error': f'Internal Server Error: {str(e)}'}), 500
-
+        return jsonify({"error": str(e)}), 500
 
 from datetime import datetime, timedelta
 
@@ -182,7 +180,9 @@ def predict_stock():
             'returns': returns
         })
     except Exception as e:
-        return jsonify({'error': str(e)}), 500
+        error_message = traceback.format_exc()
+        print(f"Error during prediction: {error_message}")
+        return jsonify({'error': f'Internal Server Error: {str(e)}'}), 500
 
 
 @app.route('/api/stock/info', methods=['GET'])
