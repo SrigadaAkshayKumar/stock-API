@@ -15,7 +15,7 @@ from sklearn.linear_model import LinearRegression
 import os
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": ["https://stockanalyzer-qtk1.onrender.com"]}})
+CORS(app, resources={r"/*": {"origins": ["https://aistockanalyzer.onrender.com"]}})
 
 # Load the model with error handling using tf.keras
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
