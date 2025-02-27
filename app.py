@@ -257,23 +257,12 @@ def get_stocks_by_exchange():
         return jsonify({"error": "Exchange parameter is required"}), 400
 
     exchange_stocks = {
-        "BSE": ["RELIANCE.BO", "TCS.BO", "INFY.BO", "HDFCBANK.BO", "ICICIBANK.BO", "MARUTI.BO", "HINDALCO.BO", "ITC.BO", 
-        "SBIN.BO", "AXISBANK.BO", "KOTAKBANK.BO", "NTPC.BO", "BAJAJ-AUTO.BO", "HAL.BO", "BHEL.BO", "ADANIPORTS.BO", "M&M.BO",
-        "TATAMOTORS.BO", "BHARTIARTL.BO", "ULTRACEMCO.BO", "GAIL.BO", "ASIANPAINT.BO", "ONGC.BO", "SUNPHARMA.BO", "TATASTEEL.BO", 
-        "WIPRO.BO", "DIVISLAB.BO", "TECHM.BO", "NESTLEIND.BO", "GRASIM.BO", "LUPIN.BO"],
-        "NSE": ["RELIANCE.NS", "TCS.NS", "INFY.NS", "HDFCBANK.NS", "ICICIBANK.NS", "MARUTI.NS", "HINDALCO.NS", "ITC.NS", "SBIN.NS", 
-        "AXISBANK.NS", "KOTAKBANK.NS", "NTPC.NS", "BAJAJ-AUTO.NS", "HAL.NS", "BHEL.NS", "ADANIPORTS.NS", "M&M.NS", "TATAMOTORS.NS", 
-        "BHARTIARTL.NS", "ULTRACEMCO.NS", "GAIL.NS", "ASIANPAINT.NS", "ONGC.NS", "SUNPHARMA.NS", "TATASTEEL.NS", "WIPRO.NS", 
-        "DIVISLAB.NS", "TECHM.NS", "NESTLEIND.NS", "GRASIM.NS", "LUPIN.NS"],
-        "US": ["GOOG", "AAPL", "MSFT", "AMZN", "TSLA", "FB", "NFLX", "NVDA", "AMD", "PYPL", "DIS", "BA", "V", "JNJ", "WMT", 
-        "MA", "INTC", "CVX", "GM", "IBM", "META", "CSCO", "AMGN", "NVDA", "ZM", "AMD", "PEP", "ADBE", "WFC", "KO", "BA", 
-        "SQ", "GS", "UBER", "ABT", "MMM", "PFE", "BMY", "PYPL", "TXN", "INTU", "SPGI", "ISRG", "BIIB", "EXPE", "PINS", 
-        "ATVI", "LMT", "RTX", "COP", "JNJ", "VZ", "PG", "MO", "XOM", "COST", "SYF", "MS", "GS", "FISV"],
-        "Cryptocurrency": ["BTC-USD", "ETH-USD", "XRP-USD", "LTC-USD", "ADA-USD", "DOGE-USD", "SOL-USD", "DOT-USD", "MATIC-USD", 
-        "BNB-USD", "AVAX-USD", "SHIB-USD", "LINK-USD", "VET-USD", "XLM-USD", "TRX-USD", "BCH-USD", "EOS-USD", 
-        "MKR-USD", "AAVE-USD", "CRV-USD", "SUSHI-USD", "FTT-USD", "YFI-USD", "ZRX-USD", "LEND-USD", "FLOKI-USD"],
-        "UK": ["BP.L", "HSBC.L", "BARC.L", "VOD.L", "RDSB.L", "LLOY.L", "GSK.L", "TSCO.L", "RIO.L", "AAL.L", "SHEL.L", 
-        "BATS.L", "ULVR.L", "IMB.L", "DGE.L", "LSEG.L", "BT.L", "PERF.L", "CRH.L", "STAN.L", "CINE.L", "ITV.L", "AHT.L", "TW.L", "SMDS.L"]
+        "BSE": ["RELIANCE.BO", "TCS.BO", "INFY.BO", "HDFCBANK.BO", "ICICIBANK.BO", "MARUTI.BO", "ITC.BO", 
+        "SBIN.BO", "AXISBANK.BO", "KOTAKBANK.BO", "HAL.BO", "BHEL.BO", "ADANIPORTS.BO",
+        "TATAMOTORS.BO", "ULTRACEMCO.BO", "TATASTEEL.BO", "WIPRO.BO", "TECHM.BO"],
+        "NSE": ["RELIANCE.NS", "TCS.NS", "INFY.NS", "HDFCBANK.NS", "ICICIBANK.NS", "MARUTI.NS", "ITC.NS", "SBIN.NS", 
+        "AXISBANK.NS", "KOTAKBANK.NS", "HAL.NS", "BHEL.NS", "ADANIPORTS.NS", "TATAMOTORS.NS", "ULTRACEMCO.NS", "TATASTEEL.NS", 
+        "WIPRO.NS", "TECHM.NS"]
     }
 
     if exchange not in exchange_stocks:
