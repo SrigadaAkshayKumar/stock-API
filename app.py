@@ -258,11 +258,9 @@ def get_stocks_by_exchange():
 
     exchange_stocks = {
         "BSE": ["RELIANCE.BO", "TCS.BO", "INFY.BO", "HDFCBANK.BO", "ICICIBANK.BO", "MARUTI.BO", "ITC.BO", 
-        "SBIN.BO", "AXISBANK.BO", "KOTAKBANK.BO", "HAL.BO", "BHEL.BO", "ADANIPORTS.BO",
-        "TATAMOTORS.BO", "ULTRACEMCO.BO", "TATASTEEL.BO", "WIPRO.BO", "TECHM.BO"],
+        "SBIN.BO", "AXISBANK.BO", "KOTAKBANK.BO", "HAL.BO", "BHEL.BO", "ADANIPORTS.BO"],
         "NSE": ["RELIANCE.NS", "TCS.NS", "INFY.NS", "HDFCBANK.NS", "ICICIBANK.NS", "MARUTI.NS", "ITC.NS", "SBIN.NS", 
-        "AXISBANK.NS", "KOTAKBANK.NS", "HAL.NS", "BHEL.NS", "ADANIPORTS.NS", "TATAMOTORS.NS", "ULTRACEMCO.NS", "TATASTEEL.NS", 
-        "WIPRO.NS", "TECHM.NS"]
+        "AXISBANK.NS"]
     }
 
     if exchange not in exchange_stocks:
