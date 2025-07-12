@@ -257,10 +257,8 @@ def get_stocks_by_exchange():
         return jsonify({"error": "Exchange parameter is required"}), 400
 
     exchange_stocks = {
-        "BSE": ["RELIANCE.BO", "TCS.BO", "INFY.BO", "HDFCBANK.BO", "ICICIBANK.BO", "MARUTI.BO", "ITC.BO", 
-        "SBIN.BO", "AXISBANK.BO", "KOTAKBANK.BO", "HAL.BO", "BHEL.BO", "ADANIPORTS.BO"],
-        "NSE": ["RELIANCE.NS", "TCS.NS", "INFY.NS", "HDFCBANK.NS", "ICICIBANK.NS", "MARUTI.NS", "ITC.NS", "SBIN.NS", 
-        "AXISBANK.NS"]
+        "BSE": ["RELIANCE.BO", "TCS.BO", "INFY.BO", "HDFCBANK.BO"],
+        "NSE": ["RELIANCE.NS", "TCS.NS", "INFY.NS", "HDFCBANK.NS"]
     }
 
     if exchange not in exchange_stocks:
