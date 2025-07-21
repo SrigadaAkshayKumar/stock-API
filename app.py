@@ -263,29 +263,7 @@ def get_stocks_by_exchange():
 
     if exchange not in exchange_stocks:
         return jsonify({"error": "Invalid exchange"}), 400
-
-    tickers = exchange_stocks[exchange]
-    stocks_data = []
-
-    try:
-        stock_data = yf.download(tickers, period="1d", group_by='ticker')
-        for ticker in tickers:
-            try:
-                stock_info = yf.Ticker(ticker).info
-                stocks_data.append({
-                    "symbol": ticker,
-                    "name": stock_info.get("longName", ticker),
-                    "open": round(stock_data[ticker]["Open"].iloc[0], 2) if not stock_data[ticker]["Open"].isna().all() else "N/A",
-                    "high": round(stock_data[ticker]["High"].iloc[0], 2) if not stock_data[ticker]["High"].isna().all() else "N/A",
-                    "low": round(stock_data[ticker]["Low"].iloc[0], 2) if not stock_data[ticker]["Low"].isna().all() else "N/A",
-                    "close": round(stock_data[ticker]["Close"].iloc[0], 2) if not stock_data[ticker]["Close"].isna().all() else "N/A",
-                })
-            except Exception as e:
-                print(f"Error fetching data for {ticker}: {str(e)}")
-
-        return jsonify({"stocks": stocks_data})
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
+    return jsonify({"stocks": exchange_stocks[exchange]})
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 10000))
