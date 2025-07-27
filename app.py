@@ -103,12 +103,12 @@ def get_stock_data():
         chart_data['Date'] = pd.to_datetime(chart_data['Date']).dt.strftime('%d-%m-%Y')
         table_data['Date'] = pd.to_datetime(table_data['Date']).dt.strftime('%d-%m-%Y')
 
-        fig1 = px.line(chart_data, x='Date', y='Close', title=f'{stock} Stock Price Over Time')
+        fig1 = px.line(chart_data, x='Date', y='Close', title=f'{stock} Stock Price Over Time',markers=True)
         fig1.update_layout(width=1200, height=600)
         fig1.update_xaxes(autorange="reversed")
         graphJSON1 = json.dumps(fig1, cls=plotly.utils.PlotlyJSONEncoder)
 
-        fig2 = px.area(chart_data, x='Date', y='Close', title=f'{stock} Stock Price Bar Chart')
+        fig2 = px.area(chart_data, x='Date', y='Close', title=f'{stock} Stock Price Bar Chart',markers=True)
         fig2.update_layout(width=1200, height=600)
         fig2.update_xaxes(autorange="reversed")
         graphJSON2 = json.dumps(fig2, cls=plotly.utils.PlotlyJSONEncoder)
