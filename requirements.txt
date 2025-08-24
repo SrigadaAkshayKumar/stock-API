@@ -4,6 +4,8 @@ cffi==1.17.1
 charset-normalizer==3.4.3
 click==8.2.1
 curl_cffi==0.13.0
+python-dotenv
+dotenv
 Flask==3.1.1
 flask-cors==6.0.1
 frozendict==2.4.6
