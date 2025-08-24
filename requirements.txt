@@ -1,5 +1,6 @@
 Flask==3.1.1
 flask-cors==6.0.1
+gunicorn==21.2.0
 requests==2.32.4
 yfinance==0.2.65
 numpy==2.3.2
